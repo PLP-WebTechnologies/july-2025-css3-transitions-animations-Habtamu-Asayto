@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Styling Effects</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <fieldset>
+        <legend>Dynamic Styling Effects</legend>
+        <button class="button-hover" onclick="withGlobalVar()">
+          Dynamic Button
+        </button>
+        <span id="varr">Welcome to global variable</span>
+      </fieldset>
+    </div>
+    <div class="container">
+      <fieldset>
+        <legend>A button that animates a box when clicked</legend>
+        <button id="animateBox">Animate Box</button>
+        <div id="box"></div>
+      </fieldset>
+    </div>
+    <div class="container">
+      <fieldset>
+        <legend>A card flip animation on hover or click</legend>
+        <div id="flip"><p style="padding: 7px">Card for Flip</p></div>
+      </fieldset>
+    </div>
+    <div class="container">
+      <fieldset>
+        <legend>
+          A loading animation that starts/stops based on user input
+        </legend>
+        <button id="toggleBtn">Start Loading</button>
+        <div class="loader"></div>
+      </fieldset>
+    </div>
+
+    <div class="container">
+      <fieldset>
+        <legend>
+          A popup/modal that slides in and fades out based on events
+        </legend>
+        <button id="openBtn" onclick="popup()">Open Modal</button>
+        <div class="modal" id="modal">
+          <div class="modal-content">
+            <span id="closeBtn">&times;</span>
+            <h2>Popup Title</h2>
+            <p>Welcome to Pop up menu</p>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <script>
+      /** Box Animation */
+      const btn = document.getElementById("animateBox");
+      const box = document.getElementById("box");
+      btn.addEventListener("click", () => {
+        box.classList.toggle("active"); // Toggle animation
+        console.log("Animation toggled");
+      });
+
+      /** Card Flip Animation */
+      const card = document.getElementById("flip");
+      card.addEventListener("click", () => {
+        card.classList.toggle("flipped"); // one class toggle
+      });
+
+      /** Loading Animation */
+      const bttn = document.getElementById("toggleBtn");
+      const loader = document.querySelector(".loader");
+      bttn.addEventListener("click", () => {
+        loader.classList.toggle("active");
+        btn.textContent = loader.classList.contains("active")
+          ? "Stop Loading"
+          : "Start Loading";
+      });
+
+      /**Popup a modal */
+      const modal = document.getElementById("modal");
+      const openBtn = document.getElementById("openBtn");
+      const closeBtn = document.getElementById("closeBtn");
+      openBtn.addEventListener("click", () => {
+        modal.classList.add("active");
+      });
+      closeBtn.addEventListener("click", () => {
+        modal.classList.remove("active");
+      });
+      // Optional: close on background click
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>

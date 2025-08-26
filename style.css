@@ -1,0 +1,146 @@
+body {
+  background-color: rgb(217, 245, 236);
+}
+.container {
+  width: 50%;
+  margin: 10px;
+  border: 2px solid rgb(255, 189, 189);
+  padding: 10px;
+}
+.button-hover {
+  background-color: rgb(2, 204, 137);
+  color: white;
+  padding: 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  margin: 70px;
+  border-radius: 5px;
+  transition: background-color 0.4s ease, transform 0.2s ease-in-out,
+    opacity 0.3s ease;
+}
+.button-hover:hover {
+  background-color: rgb(0, 153, 102);
+  transform: translateY(-5px) scale(1.05);
+  transform: translateY(-5px) translateX(5px) scale(1.05);
+  animation: continuesEffect 2s linear infinite;
+}
+@keyframes continuesEffect {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#varr {
+  display: none;
+  background-color: rgb(8, 247, 147);
+  padding: 7px;
+}
+#box {
+  width: 100px;
+  height: 100px;
+  background-color: #3498db;
+  margin-top: 20px;
+  border-radius: 8px;
+
+  /* Smooth animation */
+  transition: all 0.5s ease-in-out;
+}
+/* Animated state */
+#box.active {
+  transform: translateX(200px) rotate(45deg) scale(1.2);
+  background-color: #e74c3c;
+}
+#animateBox {
+  background-color: rgb(2, 204, 137);
+  color: white;
+  padding: 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  margin: auto;
+  border-radius: 5px;
+}
+
+#flip {
+  width: 120px;
+  height: 150px;
+  background-color: #e693a58a;
+  margin-top: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+   /* Flip animation */
+  transition: transform 0.6s ease-in-out;
+  transform-style: preserve-3d;
+}
+#flip.flipped {
+  transform: rotateY(180deg);
+  background: #e74c3c; /* Change style after flip */
+}
+.loader {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #ddd;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  margin-top: 20px;
+
+  /* Not spinning by default */
+  animation: spin 1s linear infinite;
+  animation-play-state: paused; /* 🚀 Control start/stop */
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* One class to play animation */
+.loader.active {
+  animation-play-state: running;
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+/* Modal box */
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+  transform: translateY(-50px);
+  transition: transform 0.4s ease;
+}
+
+/* Show state */
+.modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal.active .modal-content {
+  transform: translateY(0);
+}
+
+/* Close button */
+#closeBtn {
+  position: absolute;
+  top: 10px; right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
